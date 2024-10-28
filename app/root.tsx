@@ -5,9 +5,26 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  MetaFunction,
+} from "@remix-run/node";
 
 import "./tailwind.css";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "snipbunny" },
+    {
+      name: "description",
+      content: "Share snippets with organizations and other users, easily.",
+    },
+    {
+      name: "theme-color",
+      content: "#48dafb",
+    },
+  ];
+};
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
