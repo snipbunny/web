@@ -14,7 +14,9 @@ export const sessionStorage = createCookieSessionStorage({
 export async function getCurrentUser() {
   const session = await sessionStorage.getSession();
 
-  return await prisma.user.findUnique({
+  if (!session.get("id")) return undefined;
+
+  return await prisma.user.findFirst({
     where: { id: session.get("id") },
   });
 }
